@@ -1,0 +1,10 @@
+#
+# Container Image Consul
+#
+
+.nova/
+.vscode/
+*.env
+**/.DS_Store
+
+.output/

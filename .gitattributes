@@ -1,0 +1,7 @@
+#
+# Container Image Consul
+#
+
+etc/consul/ca.pem binary
+etc/consul/tls-cer.pem binary
+etc/consul/tls-key.pem binary

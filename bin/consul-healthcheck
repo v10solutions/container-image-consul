@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# Container Image Consul
+#
+
+set -o "errexit"
+set -o "nounset"
+set -o "pipefail"
+
+export CONSUL_HTTP_ADDR="$(hostname -f):${1}"
+export CONSUL_HTTP_SSL="true"
+export CONSUL_CACERT="/usr/local/etc/consul/ca.pem"
+export CONSUL_TLS_SERVER_NAME="server.$(dnsdomainname)"
+export CONSUL_GRPC_ADDR="$(hostname -f):${2}"
+
+consul members -status "alive" \
+| grep -e "$(hostname)" \
+| awk "{print \$3}" \
+| tr -d "\n"
